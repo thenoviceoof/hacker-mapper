@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Maps: <%= controller.action_name %></title>
+  
+  <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
+  <!--<script type="text/javascript" src="/javascripts/jquery.svg.js"></script>
+  <style type="text/css">@import "/stylesheets/jquery.svg.css";</style> 
+  <script type="text/javascript">
+    $(document).ready(function() {
+    $("#map").svg({loadURL:"/images/map1.svg"});
+    }
+  </script>-->
+  <script type="text/javascript" src="/javascripts/map.js"></script>
+  <style type="text/css">@import "/stylesheets/map.css";</style> 
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield  %>
+
+</body>
+</html>

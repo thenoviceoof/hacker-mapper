@@ -1,0 +1,34 @@
+<h1>HackNY Floorplan</h1>
+
+<img id="map" src="/images/map1.png" />
+
+<div id="add">
+<form id="add_form">
+<label>Group:</label> <input id="group_name" name="group_name"/> <br/>
+<label>Conspirators:</label> <input id="group_mems" name="group_mems"/> <br/>
+<label>Project:</label> <textarea id="group_idea" name="group_idea"></textarea>
+</form>
+</div>
+
+<div id="info">
+
+</div>
+
+
+
+<table>
+  <tr>
+  </tr>
+
+<% for map in @maps %>
+  <tr>
+    <td><%= link_to 'Show', map %></td>
+    <td><%= link_to 'Edit', edit_map_path(map) %></td>
+    <td><%= link_to 'Destroy', map, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New map', new_map_path %>
