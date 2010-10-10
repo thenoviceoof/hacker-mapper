@@ -11,7 +11,14 @@ class MapsController < ApplicationController
   end
 
   def superindex
-    @maps = Map.find(:all)
+    if(params[:id])
+      ids = params[:id].map{|m| Integer(m)}
+    else
+      ids = []
+    end
+    @maps = Map.all()
+    @add_maps = @maps.find_all{|m| not(ids.include?(m.id)) }
+    @del_maps = ids.find_all{|m| not(@maps.map{|n| n.id}.include?(m))}
 
     respond_to do |format|
       format.json { render :partial => "maps/index.json" }
@@ -84,7 +91,6 @@ class MapsController < ApplicationController
     @map.destroy
 
     respond_to do |format|
-      format.html { redirect_to(maps_url) }
       format.xml  { head :ok }
     end
   end

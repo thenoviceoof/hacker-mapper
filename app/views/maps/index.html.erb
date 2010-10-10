@@ -5,13 +5,12 @@
 <div id="container">
 
 <div id="info_cont">
-<h3>Info</h3>
 <div id="info">
 </div>
-
 </div>
 
 <div id="add">
+<div id="add_close" class="close"></div>
 <h3>Add your group to the map!</h3>
 <form id="add_form">
 <label for="group_name">Group:</label> 
@@ -21,7 +20,8 @@
 <label for="group_idea">Project:</label> 
 <textarea id="group_idea" name="group_idea"></textarea><br/>
 <label for="group_cont">Contact:</label> 
-<input id="group_cont" name="group_cont" />
+<input id="group_cont" name="group_cont" /><br/>
+<input id="submit_group" type="submit" />
 </form>
 </div>
 
@@ -30,7 +30,10 @@
 <div id="markers">
 </div>
 
-<div>
+<div id="backdrop">
+</div>
+
+<div id="about">
 <h2>About</h2>
 <p>This is a map for people to pin the location of their projects. It's a bit late, since it would've been most effective when people were still unsure what they were working on, but oh well.</p>
 <p>Fill out your info, and doubleclick where your group is working. To help you orient yourself:</p>
