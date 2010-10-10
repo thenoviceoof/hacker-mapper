@@ -10,14 +10,21 @@ class MapsController < ApplicationController
     end
   end
 
+  def superindex
+    @maps = Map.find(:all)
+
+    respond_to do |format|
+      format.json { render :partial => "maps/index.json" }
+    end
+  end
+
   # GET /maps/1
   # GET /maps/1.xml
   def show
     @map = Map.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @map }
+      format.json { render :partial => "maps/show.json" }
     end
   end
 
@@ -44,12 +51,11 @@ class MapsController < ApplicationController
 
     respond_to do |format|
       if @map.save
-        flash[:notice] = 'Map was successfully created.'
-        format.html { redirect_to(@map) }
-        format.xml  { render :xml => @map, :status => :created, :location => @map }
+        flash[:notice] = 'success'
+        format.json { render :partial => "maps/status.json" }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @map.errors, :status => :unprocessable_entity }
+        flash[:notice] = 'failure'
+        format.json { render :partial => "maps/status.json" }
       end
     end
   end

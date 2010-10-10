@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :maps
-
-
+  # took out for now, we don't need this
+  # map.resources :maps
 
   # The priority is based upon order of creation: first created -> highest priority.
 

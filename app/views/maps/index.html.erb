@@ -2,33 +2,42 @@
 
 <img id="map" src="/images/map1.png" />
 
+<div id="container">
+
+<div id="info_cont">
+<h3>Info</h3>
+<div id="info">
+</div>
+
+</div>
+
 <div id="add">
+<h3>Add your group to the map!</h3>
 <form id="add_form">
-<label>Group:</label> <input id="group_name" name="group_name"/> <br/>
-<label>Conspirators:</label> <input id="group_mems" name="group_mems"/> <br/>
-<label>Project:</label> <textarea id="group_idea" name="group_idea"></textarea>
+<label for="group_name">Group:</label> 
+<input id="group_name" name="group_name"/> <br/>
+<label for="group_mems">Conspirators:</label>
+<input id="group_mems" name="group_mems"/> <br/>
+<label for="group_idea">Project:</label> 
+<textarea id="group_idea" name="group_idea"></textarea><br/>
+<label for="group_cont">Contact:</label> 
+<input id="group_cont" name="group_cont" />
 </form>
 </div>
 
-<div id="info">
-
 </div>
 
+<div id="markers">
+</div>
 
-
-<table>
-  <tr>
-  </tr>
-
-<% for map in @maps %>
-  <tr>
-    <td><%= link_to 'Show', map %></td>
-    <td><%= link_to 'Edit', edit_map_path(map) %></td>
-    <td><%= link_to 'Destroy', map, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New map', new_map_path %>
+<div>
+<h2>About</h2>
+<p>This is a map for people to pin the location of their projects. It's a bit late, since it would've been most effective when people were still unsure what they were working on, but oh well.</p>
+<p>Fill out your info, and doubleclick where your group is working. To help you orient yourself:</p>
+<ul>
+<li>Blue: windows</li>
+<li>Orange: elevators</li>
+<li>Green: food table</li>
+<li>Random squares: rough outlines of masses of people</li>
+</ul>
+</div>

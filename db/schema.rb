@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20101009204305) do
     t.string   "group"
     t.string   "members"
     t.string   "project"
+    t.string   "contact"
     t.integer  "x"
     t.integer  "y"
     t.datetime "created_at"

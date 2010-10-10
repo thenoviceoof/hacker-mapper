@@ -1,4 +1,13 @@
-img { display:inline-block; }
+img { display:inline-block;float:left; }
+#container { display:inline-block;vertical-align:top; }
 #add { display:inline-block; }
 #add form { display:inline-block; }
-label {width:4em;}
+label {width:8em;display:inline-block;vertical-align:top;font-weight:bold;}
+#info_cont {background-color:white;padding:1em;border:1px black solid;
+	   position:absolute;top:0;left:0;z-index:3;
+	   width:auto;max-width:30em;}
+#info_cont h3 {margin:0;}
+#info {overflow:auto;}
+
+.mark {width:48px;height:48px;position:absolute;top:0;left:0;
+       display:block;background-image:url('/images/marker.png');}

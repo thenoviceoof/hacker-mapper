@@ -4,6 +4,8 @@ class CreateMaps < ActiveRecord::Migration
       t.string :group
       t.string :members
       t.string :project
+      t.string :contact
+
       t.integer :x
       t.integer :y
 

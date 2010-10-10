@@ -1,0 +1,4 @@
+{
+    'first_name': '<%= @user.first_name.to_json %>',
+    'last_name': '<%= @user.last_name.to_json %>'
+}
