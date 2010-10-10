@@ -91,11 +91,12 @@ function useall(data) {
     }
 }
 
+/* not sure why this guy destroys everything
 function checkstatus(data) {
     // get ids, draw markers
     if(data=="failure")
 	alert("did not update!");
-}
+	}*/
 
 function hide_add() {
     $("#add").hide();
@@ -137,10 +138,13 @@ $(document).ready(function() {
 		$("#add").show();
 		$("#group_name").focus();
 		$("#backdrop").show();});
-	//$("#add_form").submit(function(event) {
+	$("#add_form").submit(function(event) { 
+		event.preventDefault();
+		return false;
+	    });
 	$("#submit_group").click(function(event) {
 		if(submitted)
-		    return;
+		    return false;
 		var x = pos[0];
 		var y = pos[1];
 		var name = $("#group_name").val();
@@ -149,7 +153,7 @@ $(document).ready(function() {
 		var contact = $("#group_cont").val();
 		if(name=="" || members=="" || proj=="" || contact=="") {
 		    alert("Please fill up all fields with something");
-		    return;
+		    return false;
 		}
 		var info = {"map":{"group":name,
 				   "project":proj,
@@ -158,13 +162,14 @@ $(document).ready(function() {
 				   "x":x,
 				   "y":y},
 			    authenticity_token:encodeURIComponent(AUTH_TOKEN)};
-		$.post("/maps/create",info,checkStatus,"json");
-		submitted = true;
-		event.preventDefault();
-		event.stopPropagation();
 		hide_add();
 		setTimeout('getAll()',1000);
-		return;
+		submitted = true;
+		alert('hi');
+		$.post("/maps/create",info);
+		event.stopPropagation();
+		event.preventDefault();
+		return false;
 	    });
 	setInterval(getAll,15000);
     });
