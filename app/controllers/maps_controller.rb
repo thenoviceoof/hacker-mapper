@@ -58,10 +58,10 @@ class MapsController < ApplicationController
 
     respond_to do |format|
       if @map.save
-        flash[:notice] = 'success'
+        @stat = "success"
         format.json { render :partial => "maps/status.json" }
       else
-        flash[:notice] = 'failure'
+        @stat = "failure"
         format.json { render :partial => "maps/status.json" }
       end
     end

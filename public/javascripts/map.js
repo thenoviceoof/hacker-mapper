@@ -4,13 +4,13 @@ var keep_info = false;
 function drawMarker(info) {
     var markid = "marker"+info["id"];
     $("#markers").append("<div id=\""+markid+"\" class='mark'></div>");
-    function fetch(event) { 
+    function fetch() { 
 	if(keep_info)
 	    return;
-	var x = this.offsetLeft+size*0.6;
-	var y = this.offsetTop +size*0.6;
+	var x = Math.round(this.offsetLeft+size*0.6);
+	var y = Math.round(this.offsetTop +size*0.6);
 	cur_mark = $("#"+markid);
-	fetchOne(info["id"],[x,y]); 
+	getInfo(info["id"],[x,y]); 
     } //currying
     $("#"+markid).hover(fetch,hide_info);
     $("#"+markid).click(function(){
@@ -18,7 +18,8 @@ function drawMarker(info) {
 		$("#info_cont").hide();
 	    else
 		$("#info_cont").show();
-	    keep_info=toggle(keep_info);});
+	    keep_info=toggle(keep_info);
+	});
     var pos = $("#map").offset();
     var p = {"left":pos.left+info["x"]-size/2,
 	     "top":pos.top+info["y"]-size};
@@ -29,24 +30,19 @@ function toggle(something) {
     return something ? false : true;
 }
 
-function fetchOne(id,pos) {
-    // fetch more info about one id
-    function fetch(data) { useOne(data,pos); } //currying again
-    $.ajax({url:"/maps/show/"+id,success:fetch,dataType:"html"});
-}
-function useOne(id) {
+function getInfo(id,p) {
     var index = haveid.indexOf(id);
-    $("#info").html(builtinfo[index]);
-    $("#info_cont").css("left",pos[0]);
-    $("#info_cont").css("top",pos[1]);
+    $("#info").html(builtinfo[index][2]);
+    $("#info_cont").css("left",p[0]);
+    $("#info_cont").css("top",p[1]);
     $("#info_cont").show();
-    $("#delmarker"+d["id"]).click(function(e) {
-	    delete_marker(d["id"]);
+    cur_mark.css("background-image","url('/images/marker_selected.png')");
+    $("#delmarker"+id).click(function(e) {
+	    delete_marker(id);
 	    e.stopPropagation();
 	    e.preventDefault();
 	    return false;
 	});
-    cur_mark.css("background-image","url('/images/marker_selected.png')");
 }
 
 function delete_marker(id) {
@@ -95,6 +91,12 @@ function useall(data) {
     }
 }
 
+function checkstatus(data) {
+    // get ids, draw markers
+    if(data=="failure")
+	alert("did not update!");
+}
+
 function hide_add() {
     $("#add").hide();
     $("#backdrop").hide();
@@ -111,7 +113,8 @@ function hide_info() {
     if(keep_info)
 	return;
     $("#info_cont").hide();
-    cur_mark.css("background-image","url('/images/marker.png')");
+    if(cur_mark)
+	cur_mark.css("background-image","url('/images/marker.png')");
 }
 
 var pos = [0,0];
@@ -120,13 +123,22 @@ $(document).ready(function() {
 	$("#info_cont").hide();
 	hide_add();
 	$("#backdrop").click(hide_add);
-	$("#add").css("left",$(document).width()/2-$("#add").outerWidth()/2);
-	$("#add").css("top",$(document).height()/2-$("#add").outerHeight()/2);
+	//setTimeout('$("#backdrop").css("height",$(document).height())',1000)	
+	$("#backdrop").css("height",$(document).height())
 	$("#add_close").click(function(){hide_add();});
 	$("#map").click(hide_info);
 	$("#info_close").click(function(){hide_info();});
 	getAll();
-	$("#add_form").submit(function(event) {
+	$("#map").dblclick(function(event) {
+		$("#add").css("left",$(window).width()/2-$("#add").outerWidth()/2);
+		$("#add").css("top",$(window).height()/2-$("#add").outerHeight()/2+$(window).scrollTop());
+		pos = [event.pageX-this.offsetLeft,
+		       event.pageY-this.offsetTop];
+		$("#add").show();
+		$("#group_name").focus();
+		$("#backdrop").show();});
+	//$("#add_form").submit(function(event) {
+	$("#submit_group").click(function(event) {
 		if(submitted)
 		    return;
 		var x = pos[0];
@@ -137,7 +149,7 @@ $(document).ready(function() {
 		var contact = $("#group_cont").val();
 		if(name=="" || members=="" || proj=="" || contact=="") {
 		    alert("Please fill up all fields with something");
-		    return
+		    return;
 		}
 		var info = {"map":{"group":name,
 				   "project":proj,
@@ -146,17 +158,13 @@ $(document).ready(function() {
 				   "x":x,
 				   "y":y},
 			    authenticity_token:encodeURIComponent(AUTH_TOKEN)};
-		$.post("/maps/create",info,getAll,"json");
+		$.post("/maps/create",info,checkStatus,"json");
 		submitted = true;
 		event.preventDefault();
 		event.stopPropagation();
-		return false;
+		hide_add();
+		setTimeout('getAll()',1000);
+		return;
 	    });
-	$("#map").dblclick(function(event) {
-		pos = [event.pageX-this.offsetLeft,
-		       event.pageY-this.offsetTop];
-		$("#add").show();
-		$("#group_name").focus();
-		$("#backdrop").show();});
-	setInterval(getAll,10000);
+	setInterval(getAll,15000);
     });
