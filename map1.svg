@@ -13,7 +13,7 @@
    height="320"
    id="svg2"
    version="1.1"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.48.0 r9654"
    sodipodi:docname="map1.svg">
   <defs
      id="defs4">
@@ -53,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="432.92863"
-     inkscape:cy="185.82058"
+     inkscape:zoom="1"
+     inkscape:cx="379.16667"
+     inkscape:cy="271.74838"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -96,11 +96,11 @@
        x="725.54346"
        y="712.12555" />
     <rect
-       style="fill:none;stroke:#000000;stroke-width:1.25000000000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:0.54838710999999996"
+       style="fill:none;stroke:#000000;stroke-width:1.25;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect3755"
        width="53.41795"
        height="15.226493"
-       x="648.09106"
+       x="633.94891"
        y="713.98499" />
     <rect
        style="fill:#0000ff;fill-opacity:0.36078431;stroke:#000000;stroke-width:1.25;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -284,18 +284,61 @@
        id="rect2843"
        width="124.28571"
        height="92.85714"
-       x="420"
-       y="30"
-       transform="translate(12.631984,650.18243)" />
+       x="416.11533"
+       y="707.0976" />
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="442.87708"
-       y="703.71796"
+       x="420.16098"
+       y="793.20233"
        id="text2845"><tspan
          sodipodi:role="line"
          id="tspan2847"
-         x="442.87708"
-         y="703.71796">Offsite</tspan></text>
+         x="420.16098"
+         y="793.20233">Offsite</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.54070652;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3755-1"
+       width="81.153458"
+       height="15.226493"
+       x="660.19983"
+       y="756.49805" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="151.52795"
+       y="786.83972"
+       id="text3035"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3037"
+         x="151.52795"
+         y="786.83972">13th</tspan><tspan
+         sodipodi:role="line"
+         x="151.52795"
+         y="836.83972"
+         id="tspan3039">floor</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3021"
+       width="43.436558"
+       height="31.314728"
+       x="552.55847"
+       y="698.95648" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="541.22968"
+       y="746.35315"
+       id="text3791"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3793"
+         x="541.22968"
+         y="746.35315">Bath</tspan><tspan
+         sodipodi:role="line"
+         x="541.22968"
+         y="766.35315"
+         id="tspan3795">rooms!!!</tspan></text>
   </g>
 </svg>

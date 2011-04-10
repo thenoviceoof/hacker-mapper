@@ -1,10 +1,10 @@
 { "add":
 [ <% for map in @add_maps %>
 { "id": <%= map.id %>,
-  "group":"<%= map.group %>",	
-  "members":"<%= map.members %>",
-  "project":"<%= map.project %>",
-  "contact":"<%= map.contact %>",
+  "group":"<%= map.group.gsub("\"","\\\"") %>",	
+  "members":"<%= map.members.gsub("\"","\\\"") %>",
+  "project":"<%= map.project.gsub("\"","\\\"") %>",
+  "contact":"<%= map.contact.gsub("\"","\\\"") %>",
   "x":  <%= map.x %>,
   "y":  <%= map.y %> },
 <% end %>

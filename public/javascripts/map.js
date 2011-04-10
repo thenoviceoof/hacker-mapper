@@ -1,7 +1,7 @@
 // current marker selected
 var cur_mark;
 // icon size
-pvar size = 48;
+var size = 48;
 // click keeps info around
 var keep_info = false;
 
@@ -150,7 +150,7 @@ $(document).ready(function() {
 		$("#group_name").focus();
 		$("#backdrop").show();});
 	$("#submit_group").click(function(event) {
-		var info = sanitizeSubmit();
+		var info = handleSubmit();
 		info["authenticity_token"] = encodeURIComponent(AUTH_TOKEN);
 		setTimeout('initUpdate()',1000);
 		hideAdd();

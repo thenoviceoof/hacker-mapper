@@ -3,3 +3,7 @@ HackNY Hacker-finder
 ----------------------------------------
 
 Made originally for HackNY 2010, it was conceived as a way to let people see what groups were doing, and where they could find them. I finished the app way too late for the app to have any impact whatsoever, but I hope that you can use this code as a base for future hackathon hacker maps.
+
+Last tested with:
+
+Rails 2.2.3, Ubuntu 10.10 - at the Spring 2011 HackNY

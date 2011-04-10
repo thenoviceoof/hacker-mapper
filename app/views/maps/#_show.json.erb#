@@ -1,6 +1,0 @@
-{"id":"<%= @map.id %>",
-"group":"<%= @map.group %>",
-"members":"<%= @map.members %>",
-"project":"<%= @map.project %>",
-"contact":"<%= @map.contact %>"
-}
